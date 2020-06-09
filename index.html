@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hour Helper</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Happy Hour Helper</h1>
+        <button id="start-over" class="hidden">Start Over</button>
+    </header>
+    
+    <container id="landing"> 
+        <section>
+            <h2>Do you want recipes for food, cocktails, or both?</h2>
+            <div>
+                <input type="checkbox" id="food" name="food">
+                <label for="food">Food</label>
+                <input type="checkbox" id="cocktails" name="cocktails">
+                <label for="cocktails">Cocktails</label>
+            </div>
+            <div>
+                <button id="landing-button">Go!</button>
+            </div>
+        </section>
+    </container>
+
+    <container id="options">
+        <section id="food-options" class="hidden">
+            <h2>Food options.</h2>
+            <label for="food-options">Search for dishes by keyword:</label>
+            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient here." required>
+            <label for="max-results">Enter how many food recipes you want to see:</label>
+            <input type="number" name="max-results" id="max-results" value="3">
+            <div>
+                <input type="checkbox" id="gluten-free" name="gluten-free">
+                <label for="gluten-free">Gluten free</label>
+                <input type="checkbox" id="vegan" name="vegan">
+                <label for="vegan">Vegan</label>
+                <input type="checkbox" id="vegetarian" name="vegetarian">
+                <label for="vegetarian">Vegetarian</label>
+            </div>
+        </section>
+        <section id="cocktail-options" class="hidden">
+            <h2>Cocktail options.</h2>
+            <label for="cocktail-options">Search for cocktails by keyword:</label>
+            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient here." required>
+        </section>
+        <section id="options-button" class="hidden">
+            <button>Go!</button>
+        </section>
+    </container>
+
+    <p id="js-error-message" class="error-message"></p>
+
+    <container id="results">
+        <section id="food-results" class="hidden">
+            <h2>Food recipes:</h2>
+            <ul id="food-results-list">
+            </ul>
+        </section>
+        <section id="cocktail-results" class="hidden">
+            <h2>Cocktail recipes:</h2>
+            <ul id="cocktail-results-list">
+            </ul>
+        </section>
+    </container>
+
+    <container id="food-error" class="hidden">
+        <h2>Sorry, we can't find any food recipes matching your keyword.</h2>
+        <p>Please try again.</p>
+    </container>
+
+    <container id="cocktail-error" class="hidden">
+        <h2>Sorry, we can't find any drink recipes matching your keyword.</h2>
+        <p>Please try again.</p>
+    </container>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
