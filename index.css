@@ -34,12 +34,16 @@ button {
 button:hover {
     cursor: pointer;
   }
-  
+
+li {
+  list-style: none;
+}
+
 #error {
       color: red;
   }
   
-.hidden {
+.hidden, .null {
     display: none;
   }
 
