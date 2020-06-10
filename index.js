@@ -19,29 +19,29 @@ function displayFoodResults(responseJson) {
     console.log(responseJson);
     $('#food-results-list').empty();
 
-    if (responseJson.count == 0) {
-      $('#food-error').removeClass('hidden');
-      $('#food-results').addClass('hidden');
-      } else {
-        shuffle(responseJson.hits);
-        for (let i = 0; i < responseJson.hits.length; i++){
-            $('#food-results-list').append(
-                `<li><h3>${responseJson.hits[i].recipe.label}</h3>
-                <img class="images" src ="${responseJson.hits[i].recipe.image}">
-                <p>Ingredients needed:</p>
-                </li>`)
-            for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++){
+    if (responseJson.count === 0) {
+        $('#food-error').removeClass('hidden');
+        $('#food-results').addClass('hidden');
+        } else {
+            shuffle(responseJson.hits);
+            for (let i = 0; i < responseJson.hits.length; i++){
                 $('#food-results-list').append(
-                    `<li>${responseJson.hits[i].recipe.ingredientLines[j]}</li>`)
-                }
-            $('#food-results-list').append(
-                `<p>Serves: ${responseJson.hits[i].recipe.yield}  |  Calories: ${Math.round(responseJson.hits[i].recipe.calories)}</p>
-                <p>For directions to this recipe, go to <a href="${responseJson.hits[i].recipe.url}" target="_blank">${responseJson.hits[i].recipe.source}.</p>`)
-            }; 
-        
-        $('#food-results').removeClass('hidden');
-        $('#food-error').addClass('hidden');
-        $('#start-over').removeClass('hidden');
+                    `<li><h3>${responseJson.hits[i].recipe.label}</h3>
+                    <img class="images" src ="${responseJson.hits[i].recipe.image}">
+                    <p>Ingredients needed:</p>
+                    </li>`)
+                for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++){
+                    $('#food-results-list').append(
+                        `<li>${responseJson.hits[i].recipe.ingredientLines[j]}</li>`)
+                    }
+                $('#food-results-list').append(
+                    `<p>Serves: ${responseJson.hits[i].recipe.yield}  |  Calories: ${Math.round(responseJson.hits[i].recipe.calories)}</p>
+                    <p>For directions to this recipe, go to <a href="${responseJson.hits[i].recipe.url}" target="_blank">${responseJson.hits[i].recipe.source}.</p>`)
+                }; 
+            $('#food-results').removeClass('hidden');
+            $('#food-error').addClass('hidden');
+            $('#start-over').removeClass('hidden');
+            startOver();
     }
 }
 
@@ -89,6 +89,7 @@ function getFood(query, results) {
         .then(responseJson => displayFoodResults(responseJson))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong with your food search: ${err.message}`);
+            $('#food-results').addClass('hidden');
       }); 
     }
 }
@@ -96,13 +97,18 @@ function getFood(query, results) {
 function displayCocktailResults(responseJson) {
     console.log(responseJson);
     $('#cocktail-results-list').empty();
-    
+
     if (responseJson.drinks == null) {
         $('#cocktail-error').removeClass('hidden');
         $('#cocktail-results').addClass('hidden');
         } else {
-            shuffle(responseJson.drinks);
-            const results = $('#max-results').val();
+            shuffle(responseJson.drinks); 
+            let results = 1;
+            if ($('#max-results').val() > responseJson.drinks.length) {
+                results = responseJson.drinks.length;
+            } else {
+                results = $('#max-results').val();
+            };
             for (let i = 0; i < results; i++) {
                 $('#cocktail-results-list').append(
                     `<li><h3>${responseJson.drinks[i].strDrink}</h3>
@@ -126,11 +132,11 @@ function displayCocktailResults(responseJson) {
                     <p>${responseJson.drinks[i].strInstructions}</p>
                     </li>`);
                 };        
-            };
-        
-        $('#cocktail-results').removeClass('hidden');
-        $('#cocktail-error').addClass('hidden');
-        $('#start-over').removeClass('hidden');
+            $('#cocktail-results').removeClass('hidden');
+            $('#cocktail-error').addClass('hidden');
+            $('#start-over').removeClass('hidden');
+            startOver();
+    }
 }
 
 function getCocktails(query) {
@@ -145,6 +151,7 @@ function getCocktails(query) {
         .then(responseJson => displayCocktailResults(responseJson))
         .catch(err => {
             $('#js-error-message').text(`Something went wrong with your cocktail search: ${err.message}`);
+            $('#cocktail-results').addClass('hidden');
       });
     }
 }
@@ -188,6 +195,30 @@ function watchOptions() {
         const maxResults = $('#max-results').val();
         getFood(foodSearch, maxResults);
         getCocktails(cocktailSearch);
+    });
+}
+
+function startOver() {
+    $('#start-over').click(function() {
+        event.preventDefault();
+        $('#food-results-list').empty();
+        $('#cocktail-results-list').empty();
+        $('#food-results').addClass('hidden');
+        $('#cocktail-results').addClass('hidden');
+        $('#food-options').addClass('hidden');
+        $('#cocktail-options').addClass('hidden');
+        $('#options-button').addClass('hidden');
+        $('#max').addClass('hidden');
+        $('#landing').removeClass('hidden');
+        $('#start-over').addClass('hidden');
+        $('#food-error').addClass('hidden');
+        $('#cocktail-error').addClass('hidden');
+        $('#js-error-message').addClass('hidden');
+        document.getElementById('food').checked = false;
+        document.getElementById('cocktails').checked = false;
+        document.getElementById('food-search').value = '';
+        document.getElementById('cocktail-search').value = '';
+        document.getElementById('max-results').value = 1;
     });
 }
 

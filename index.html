@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Hour Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for food and cocktails with this web app.">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav>
+        <button id="start-over" class="hidden">Start Over</button>
+    </nav>
     <header>
         <h1>Happy Hour Helper</h1>
-        <button id="start-over" class="hidden">Start Over</button>
     </header>
     
     <container id="landing"> 
@@ -31,7 +34,7 @@
     <container id="options">
         <section id="food-options" class="hidden">
             <h2>Food options.</h2>
-            <label for="food-options">Search for dishes by keyword:</label>
+            <label for="food-options">Search for dishes by keyword or letter:</label>
             <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient here." required>
             <div>
                 <input type="checkbox" id="low-carb" name="low-carb">
@@ -44,7 +47,7 @@
         </section>
         <section id="cocktail-options" class="hidden">
             <h2>Cocktail options.</h2>
-            <label for="cocktail-options">Search for cocktails by keyword:</label>
+            <label for="cocktail-options">Search for cocktails by keyword or letter:</label>
             <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient here." required>
         </section>
         <section id="max" class="hidden">
@@ -75,12 +78,12 @@
     </container>
 
     <container id="food-error" class="hidden">
-        <h2>Sorry, we can't find any food recipes matching your keyword.</h2>
+        <h2>Sorry, we can't find any food recipes.</h2>
         <p>Please try again.</p>
     </container>
 
     <container id="cocktail-error" class="hidden">
-        <h2>Sorry, we can't find any drink recipes matching your keyword.</h2>
+        <h2>Sorry, we can't find any drink recipes.</h2>
         <p>Please try again.</p>
     </container>
 
