@@ -33,11 +33,9 @@
             <h2>Food options.</h2>
             <label for="food-options">Search for dishes by keyword:</label>
             <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient here." required>
-            <label for="max-results">Enter how many food recipes you want to see:</label>
-            <input type="number" name="max-results" id="max-results" value="3">
             <div>
-                <input type="checkbox" id="gluten-free" name="gluten-free">
-                <label for="gluten-free">Gluten free</label>
+                <input type="checkbox" id="low-carb" name="low-carb">
+                <label for="low-carb">Low-carb</label>
                 <input type="checkbox" id="vegan" name="vegan">
                 <label for="vegan">Vegan</label>
                 <input type="checkbox" id="vegetarian" name="vegetarian">
@@ -48,6 +46,11 @@
             <h2>Cocktail options.</h2>
             <label for="cocktail-options">Search for cocktails by keyword:</label>
             <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient here." required>
+        </section>
+        <section id="max" class="hidden">
+            <br>
+            <label for="max-results">How many recipies do you want to see?</label>
+            <input type="number" name="max-results" id="max-results" value="1" min="1" max="10" required><span> (between 1 and 10)</span>
         </section>
         <section id="options-button" class="hidden">
             <button>Go!</button>
@@ -61,11 +64,13 @@
             <h2>Food recipes:</h2>
             <ul id="food-results-list">
             </ul>
+            <p>Recipes provided by <a href="https://www.edamam.com/" target="_blank">Edamam</a>.</p>
         </section>
         <section id="cocktail-results" class="hidden">
             <h2>Cocktail recipes:</h2>
             <ul id="cocktail-results-list">
             </ul>
+            <p>Cocktail recipes provided by <a href="https://www.thecocktaildb.com/" target="_blank">TheCocktailDB</a>.</p>
         </section>
     </container>
 

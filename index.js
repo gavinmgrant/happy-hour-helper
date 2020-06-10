@@ -6,7 +6,7 @@ const apiKeyCocktail = '1';
 const searchURLFood = 'https://api.edamam.com/search';
 const searchURLCocktail = 'https://www.thecocktaildb.com/api/json/v1/';
 
-// This shuffles an array.
+// Shuffles an array.
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -45,16 +45,15 @@ function displayFoodResults(responseJson) {
     }
 }
 
-function getFoodRestrictions(gf, ve, vg) {
-    console.log(gf, ve, vg)
-    let gfRestriction = '';
+function getFoodRestrictions(lc, ve, vg) {
+    let lcRestriction = '';
     let veRestriction = '';
     let vgRestriction = '';
 
-    if (gf) {
-        gfRestriction = '&health=gluten-free';
+    if (lc) {
+        lcRestriction = '&diet=low-carb';
     } else {
-        gfRestriction = '';
+        lcRestriction = '';
     };
 
     if (ve) {
@@ -69,13 +68,17 @@ function getFoodRestrictions(gf, ve, vg) {
         vgRestriction = '';
     };
     
-    const restrictions = gfRestriction + veRestriction + vgRestriction;
+    const restrictions = lcRestriction + veRestriction + vgRestriction;
     return restrictions;
 }
 
-function getFood(query, maxResults=3) {
-    console.log(getFoodRestrictions());
-    const url = searchURLFood + '?q=' + query + '&app_id=' + apiIdFood + '&app_key=' + apiKeyFood + '&from=0&to=' + maxResults;
+function getFood(query, results) {
+    const lowCarb = $('#low-carb').is(':checked');
+    const vegan = $('#vegan').is(':checked');
+    const vegetarian = $('#vegetarian').is(':checked');
+    let foodRestrictions = getFoodRestrictions(lowCarb, vegan, vegetarian);
+
+    const url = searchURLFood + '?q=' + query + '&app_id=' + apiIdFood + '&app_key=' + apiKeyFood + '&from=0&to=' + results + foodRestrictions;
     console.log(url);
 
     if (query === "") {
@@ -93,13 +96,14 @@ function getFood(query, maxResults=3) {
 function displayCocktailResults(responseJson) {
     console.log(responseJson);
     $('#cocktail-results-list').empty();
-
+    
     if (responseJson.drinks == null) {
         $('#cocktail-error').removeClass('hidden');
         $('#cocktail-results').addClass('hidden');
         } else {
             shuffle(responseJson.drinks);
-            for (let i = 0; i < responseJson.drinks.length; i++) {
+            const results = $('#max-results').val();
+            for (let i = 0; i < results; i++) {
                 $('#cocktail-results-list').append(
                     `<li><h3>${responseJson.drinks[i].strDrink}</h3>
                     <img class="images" src ="${responseJson.drinks[i].strDrinkThumb}">
@@ -149,6 +153,7 @@ function displayOptions(food, cocktails) {
     if (food) {
         $('#food-options').removeClass('hidden');
         $('#options-button').removeClass('hidden');
+        $('#max').removeClass('hidden');
         $('#landing').addClass('hidden');
     } else {
         $('#food-options').addClass('hidden');
@@ -156,6 +161,7 @@ function displayOptions(food, cocktails) {
     if (cocktails) {
         $('#cocktail-options').removeClass('hidden');
         $('#options-button').removeClass('hidden');
+        $('#max').removeClass('hidden');
         $('#landing').addClass('hidden');
     } else {
         $('#cocktail-options').addClass('hidden');
@@ -178,15 +184,10 @@ function watchOptions() {
     $('#options-button').click(function() {
         event.preventDefault();
         const foodSearch = $('#food-search').val();
-        const maxResults = $('#max-results').val();
         const cocktailSearch = $('#cocktail-search').val();
+        const maxResults = $('#max-results').val();
         getFood(foodSearch, maxResults);
         getCocktails(cocktailSearch);
-
-        const glutenFree = $('#gluten-free').is(':checked');
-        const vegan = $('#vegan').is(':checked');
-        const vegetarian = $('#vegetarian').is(':checked');
-        getFoodRestrictions(glutenFree, vegan, vegetarian);
     });
 }
 
