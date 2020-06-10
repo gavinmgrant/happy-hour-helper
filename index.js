@@ -15,6 +15,7 @@ function shuffle(arr) {
     return arr;
 }
 
+// Displays the food recipe results.
 function displayFoodResults(responseJson) {
     console.log(responseJson);
     $('#food-results-list').empty();
@@ -45,6 +46,7 @@ function displayFoodResults(responseJson) {
     }
 }
 
+// Creates the string for the food restritions to add to the URL.
 function getFoodRestrictions(lc, ve, vg) {
     let lcRestriction = '';
     let veRestriction = '';
@@ -72,6 +74,7 @@ function getFoodRestrictions(lc, ve, vg) {
     return restrictions;
 }
 
+// Fetches the food recipes from the API.
 function getFood(query, results) {
     const lowCarb = $('#low-carb').is(':checked');
     const vegan = $('#vegan').is(':checked');
@@ -94,6 +97,7 @@ function getFood(query, results) {
     }
 }
 
+// Displays the cocktail recipe results.
 function displayCocktailResults(responseJson) {
     console.log(responseJson);
     $('#cocktail-results-list').empty();
@@ -103,12 +107,16 @@ function displayCocktailResults(responseJson) {
         $('#cocktail-results').addClass('hidden');
         } else {
             shuffle(responseJson.drinks); 
+            
+            // This bit makes sure the maximum results requested does not exceed the number of entries in the array.
             let results = 1;
             if ($('#max-results').val() > responseJson.drinks.length) {
                 results = responseJson.drinks.length;
             } else {
                 results = $('#max-results').val();
             };
+
+            // This adds the results to the DOM.
             for (let i = 0; i < results; i++) {
                 $('#cocktail-results-list').append(
                     `<li><h3>${responseJson.drinks[i].strDrink}</h3>
@@ -139,6 +147,7 @@ function displayCocktailResults(responseJson) {
     }
 }
 
+// Fetches the cocktail recipes from the API.
 function getCocktails(query) {
     const url = searchURLCocktail + apiKeyCocktail + '/search.php?s=' + query;
     console.log(url);
@@ -156,6 +165,7 @@ function getCocktails(query) {
     }
 }
 
+// Displays the options view and hides the landing view.
 function displayOptions(food, cocktails) {
     if (food) {
         $('#food-options').removeClass('hidden');
@@ -179,6 +189,7 @@ function displayOptions(food, cocktails) {
     }
 }
 
+// Waits for the user to select recipes for food, cocktail, or both on the landing view.
 function watchLanding() {
     $('#landing-button').click(function() {
         const foodLanding = $('#food').is(':checked');
@@ -187,6 +198,7 @@ function watchLanding() {
     });
 }
 
+// Waits for the user to select their search options.
 function watchOptions() {
     $('#options-button').click(function() {
         event.preventDefault();
@@ -198,6 +210,7 @@ function watchOptions() {
     });
 }
 
+// Waits for the user to click the start over button to start the app again.
 function startOver() {
     $('#start-over').click(function() {
         event.preventDefault();
