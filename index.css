@@ -27,6 +27,7 @@ section {
 
 h1, h2 {
   font-family: 'Playfair Display', serif;
+  font-weight: 500;
 }
 
 button, input, select {
