@@ -100,6 +100,7 @@ li {
 
 nav {
   position: sticky;
+  position: -webkit-sticky; /* Safari */
   top: 0px;
 }
 
