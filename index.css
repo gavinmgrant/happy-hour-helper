@@ -6,6 +6,10 @@ html {
   margin: 0;
 }
 
+header {
+  color: #333333;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -13,6 +17,7 @@ body {
   margin-right: auto;
   padding: 50px;
   text-align: center;
+  color: #616161;
 }
 
 section {
@@ -28,6 +33,13 @@ button, input, select {
   padding: 10px;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
+  border-radius: 5px;
+}
+
+input[type="text"], input[type="number"] {
+  color: #616161;
+  border: 1px solid #616161;
+  margin-top: 10px;
 }
 
 input[type="text"] {
@@ -35,20 +47,48 @@ input[type="text"] {
 }
 
 input[type="number"] {
-  width: 20%;
+  width: 70px;
+}
+
+input[type=text]:focus, input[type="number"]:focus, input[type="checkbox"]:focus {
+  border: 1px solid #333333;
+}
+
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
+  color: #616161;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  *overflow: hidden;
+}
+
+input[type="checkbox"]:hover + label {
+  color: #333333;
+}
+
+input[type="checkbox"]:checked {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 
 button {
   margin-top: 20px;
   width: 200px;
   border: none;
-  border-radius: 5px;
-  background-color: black;
+  outline: none;
+  background-color: #616161;
   color: white;
 }
 
-button:hover, label:hover, input[type="checkbox"]:hover {
+button:hover, input[type="checkbox"]:hover {
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #333333;
 }
 
 ul {
@@ -66,8 +106,18 @@ nav {
   top: 0px;
 }
 
+a:link, a:visited {
+  color: #616161;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .options {
-  display: block;
   margin: 10px;
 }
 
@@ -81,8 +131,12 @@ nav {
   padding: 0;
 }
 
-#error {
-  color: red;
+#landing-button {
+  margin-top: 20px;
+}
+
+#error, #food-error, #cocktail-error {
+  color: #b22222;
 }
 
 #results {
@@ -94,8 +148,31 @@ nav {
 }
 
 #start-over {
-  background-color: red;
+  background-color: #b22222;
+  color: white;
+  border: 1px solid #b22222;
   margin-top: 10px;
+}
+
+#start-over:hover {
+  background-color: white;
+  color: #b22222;
+  border: 1px solid #b22222;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-border: 1px solid #616161;
+  -webkit-text-fill-color: #333333;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: none;
 }
 
 @media screen and (min-width: 600px) {
@@ -112,7 +189,7 @@ nav {
   }
 
   input[type="text"] {
-    width: 100%;
+    width: 80%;
   }
 }
 
