@@ -174,6 +174,7 @@ function displayOptions(food, cocktails) {
         $('#landing').addClass('hidden');
     } else {
         $('#food-options').addClass('hidden');
+        $('#no-food-search').removeClass('hidden');
     };
     if (cocktails) {
         $('#cocktail-options').removeClass('hidden');
@@ -182,6 +183,7 @@ function displayOptions(food, cocktails) {
         $('#landing').addClass('hidden');
     } else {
         $('#cocktail-options').addClass('hidden');
+        $('#no-cocktail-search').removeClass('hidden');
     };
     if (!food && !cocktails) {
         $('#options-button').addClass('hidden');
@@ -207,6 +209,7 @@ function watchOptions() {
         const maxResults = $('#max-results').val();
         getFood(foodSearch, maxResults);
         getCocktails(cocktailSearch);
+        $('#options').addClass('hidden');
     });
 }
 
@@ -227,6 +230,9 @@ function startOver() {
         $('#food-error').addClass('hidden');
         $('#cocktail-error').addClass('hidden');
         $('#js-error-message').addClass('hidden');
+        $('#no-food-search').addClass('hidden');
+        $('#no-cocktail-search').addClass('hidden');
+        $('#options').removeClass('hidden');
         document.getElementById('food').checked = false;
         document.getElementById('cocktails').checked = false;
         document.getElementById('food-search').value = '';

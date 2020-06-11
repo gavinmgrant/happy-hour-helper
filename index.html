@@ -5,8 +5,8 @@
     <title>Happy Hour Helper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Search for food and cocktails with this web app.">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,12 +20,12 @@
     <container id="landing"> 
         <section>
             <h2>Do you want recipes for food, cocktails, or both?</h2>
-            <div>
-                <div class="options">
+            <div class="options-all">
+                <div class="option">
                     <input type="checkbox" id="food" name="food">
                     <label for="food">Food</label>
                 </div>
-                <div class="options">
+                <div class="option">
                     <input type="checkbox" id="cocktails" name="cocktails">
                     <label for="cocktails">Cocktails</label>
                 </div>
@@ -38,28 +38,34 @@
 
     <container id="options">
         <section id="food-options" class="hidden">
-            <h2>Food options.</h2>
+            <h2>Food options:</h2>
             <label for="food-options">Search for dishes by keyword or letter:</label>
             <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient here." required>
-            <div>
-                <div class="options">
+            <div class="options-all">
+                <div class="option">
                     <input type="checkbox" id="low-carb" name="low-carb">
                     <label for="low-carb">Low-carb</label>
                 </div>
-                <div class="options">
+                <div class="option">
                     <input type="checkbox" id="vegan" name="vegan">
                     <label for="vegan">Vegan</label>
                 </div>
-                <div class="options">
+                <div class="option">
                     <input type="checkbox" id="vegetarian" name="vegetarian">
                     <label for="vegetarian">Vegetarian</label>
                 </div>
             </div>
         </section>
         <section id="cocktail-options" class="hidden">
-            <h2>Cocktail options.</h2>
+            <h2>Cocktail options:</h2>
             <label for="cocktail-options">Search for cocktails by keyword or letter:</label>
             <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient here." required>
+        </section>
+        <section id="no-food-search" class="hidden">
+            <h2>No food recipe search.</h2>
+        </section>
+        <section id="no-cocktail-search" class="hidden">
+            <h2>No cocktail recipe search.</h2>
         </section>
         <section id="max" class="hidden">
             <br>
@@ -71,8 +77,6 @@
             <button>Go!</button>
         </section>
     </container>
-
-    <p id="js-error-message" class="error-message"></p>
 
     <container id="results">
         <section id="food-results" class="hidden">
@@ -98,6 +102,8 @@
         <h2>Sorry, we can't find any drink recipes.</h2>
         <p>Please try again.</p>
     </container>
+
+    <p id="js-error-message" class="error-message"></p>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="index.js"></script>

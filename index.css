@@ -15,7 +15,7 @@ body {
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding: 50px;
+  padding: 25px;
   text-align: center;
   color: #616161;
 }
@@ -25,9 +25,9 @@ section {
   margin-bottom: 20px;
 }
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: #333333;
 }
 
 button, input, select {
@@ -59,11 +59,7 @@ input[type="checkbox"] {
   height: 25px;
   width: 25px;
   color: #616161;
-  padding: 0;
-  margin:0;
-  vertical-align: bottom;
-  position: relative;
-  *overflow: hidden;
+  vertical-align: middle;
 }
 
 input[type="checkbox"]:hover + label {
@@ -118,8 +114,12 @@ a:hover {
   text-decoration: underline;
 }
 
-.options {
+.option {
   margin: 10px;
+}
+
+.options-all {
+  margin-top: 10px;
 }
 
 .hidden, .null {
@@ -152,7 +152,7 @@ a:hover {
   background-color: #b22222;
   color: white;
   border: 1px solid #b22222;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 #start-over:hover {
@@ -176,13 +176,9 @@ select:-webkit-autofill:focus {
   box-shadow: none;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 500px) {
   body {
-    width: 500px;
-  }
-
-  .options {
-    display: inline;
+    width: 450px;
   }
 
   .images {
@@ -194,9 +190,13 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 700px) {
   body {
-    width: 600px;
+    width: 650px;
+  }
+
+  .option {
+    display: inline;
   }
 
   .images {
@@ -204,12 +204,23 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1200px) {
   body {
-    width: 600px;
+    width: 1200px;
   }
 
-  .images {
-    width: 500px;
+  #food-options, #food-results, #food-error, #no-food-search {
+    width: 50%;
+    float: left;
   }
+
+  #cocktail-options, #cocktail-results, #cocktail-error, #no-cocktail-search {
+    width: 50%;
+    float: right;
+  }
+
+  #max {
+    clear: both;
+  }
+
 }
