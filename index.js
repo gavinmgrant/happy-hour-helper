@@ -23,6 +23,8 @@ function displayFoodResults(responseJson) {
     if (responseJson.count === 0) {
         $('#food-error').removeClass('hidden');
         $('#food-results').addClass('hidden');
+        $('#start-over').removeClass('hidden');
+        startOver();
         } else {
             shuffle(responseJson.hits);
             for (let i = 0; i < responseJson.hits.length; i++){
@@ -105,6 +107,8 @@ function displayCocktailResults(responseJson) {
     if (responseJson.drinks == null) {
         $('#cocktail-error').removeClass('hidden');
         $('#cocktail-results').addClass('hidden');
+        $('#start-over').removeClass('hidden');
+        startOver();
         } else {
             shuffle(responseJson.drinks); 
             
