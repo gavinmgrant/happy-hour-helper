@@ -9,21 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <button id="start-over" class="hidden">Start Over</button>
-    </nav>
     <header>
         <h1>Happy Hour Helper</h1>
     </header>
+
+    <nav>
+        <button id="start-over" class="hidden">Start Over</button>
+    </nav>
     
     <container id="landing"> 
         <section>
             <h2>Do you want recipes for food, cocktails, or both?</h2>
             <div>
-                <input type="checkbox" id="food" name="food">
-                <label for="food">Food</label>
-                <input type="checkbox" id="cocktails" name="cocktails">
-                <label for="cocktails">Cocktails</label>
+                <div class="options">
+                    <input type="checkbox" id="food" name="food">
+                    <label for="food">Food</label>
+                </div>
+                <div class="options">
+                    <input type="checkbox" id="cocktails" name="cocktails">
+                    <label for="cocktails">Cocktails</label>
+                </div>
             </div>
             <div>
                 <button id="landing-button">Go!</button>
@@ -37,12 +42,18 @@
             <label for="food-options">Search for dishes by keyword or letter:</label>
             <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient here." required>
             <div>
-                <input type="checkbox" id="low-carb" name="low-carb">
-                <label for="low-carb">Low-carb</label>
-                <input type="checkbox" id="vegan" name="vegan">
-                <label for="vegan">Vegan</label>
-                <input type="checkbox" id="vegetarian" name="vegetarian">
-                <label for="vegetarian">Vegetarian</label>
+                <div class="options">
+                    <input type="checkbox" id="low-carb" name="low-carb">
+                    <label for="low-carb">Low-carb</label>
+                </div>
+                <div class="options">
+                    <input type="checkbox" id="vegan" name="vegan">
+                    <label for="vegan">Vegan</label>
+                </div>
+                <div class="options">
+                    <input type="checkbox" id="vegetarian" name="vegetarian">
+                    <label for="vegetarian">Vegetarian</label>
+                </div>
             </div>
         </section>
         <section id="cocktail-options" class="hidden">
@@ -52,8 +63,9 @@
         </section>
         <section id="max" class="hidden">
             <br>
-            <label for="max-results">How many recipies do you want to see?</label>
-            <input type="number" name="max-results" id="max-results" value="1" min="1" max="10" required><span> (between 1 and 10)</span>
+            <label for="max-results">How many recipies do you want to see?</label><br>
+            <input type="number" name="max-results" id="max-results" value="1" min="1" max="10" required>
+            <span>(between 1 and 10)</span>
         </section>
         <section id="options-button" class="hidden">
             <button>Go!</button>

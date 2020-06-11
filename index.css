@@ -8,9 +8,16 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  width: 600px;
+  font-size: 20px;
   margin-left: auto;
   margin-right: auto;
+  padding: 50px;
+  text-align: center;
+}
+
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 h1, h2 {
@@ -18,38 +25,50 @@ h1, h2 {
 }
 
 button, input, select {
-  padding: 5px;
+  padding: 10px;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 input[type="text"] {
-  width: 100%;
+  width: 75%;
 }
 
 input[type="number"] {
-  width: 10%;
+  width: 20%;
 }
 
 button {
-  margin-top: 15px;
+  margin-top: 20px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
 }
 
-button:hover {
+button:hover, label:hover, input[type="checkbox"]:hover {
   cursor: pointer;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
 }
 
 li {
   list-style: none;
+  text-align: center;
 }
 
-#error {
-  color: red;
+nav {
+  position: sticky;
+  top: 0px;
 }
 
-#start-over {
-  float: right;
-  margin-top: 5px;
+.options {
+  display: block;
+  margin: 10px;
 }
 
 .hidden, .null {
@@ -58,5 +77,61 @@ li {
 
 .images {
   border-radius: 10px;
-  width: 300px;
+  width: 250px;
+  padding: 0;
+}
+
+#error {
+  color: red;
+}
+
+#results {
+  margin-top: 50px;
+}
+
+#food-results, #cocktail-results {
+  margin-top: 50px;
+}
+
+#start-over {
+  background-color: red;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    width: 500px;
+  }
+
+  .options {
+    display: inline;
+  }
+
+  .images {
+    width: 300px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    width: 600px;
+  }
+
+  .images {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  body {
+    width: 600px;
+  }
+
+  .images {
+    width: 500px;
+  }
 }
