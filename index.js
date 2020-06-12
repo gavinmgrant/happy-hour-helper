@@ -49,8 +49,9 @@ function displayFoodResults(responseJson) {
 }
 
 // Creates the string for the food restritions to add to the URL.
-function getFoodRestrictions(lc, ve, vg) {
+function getFoodRestrictions(lc, lf, ve, vg) {
     let lcRestriction = '';
+    let lfRestriction = '';
     let veRestriction = '';
     let vgRestriction = '';
 
@@ -58,6 +59,11 @@ function getFoodRestrictions(lc, ve, vg) {
         lcRestriction = '&diet=low-carb';
     } else {
         lcRestriction = '';
+    };
+    if (lf) {
+        lfRestriction = '&diet=low-fat';
+    } else {
+        lfRestriction = '';
     };
     if (ve) {
         veRestriction = '&health=vegan';
@@ -70,16 +76,17 @@ function getFoodRestrictions(lc, ve, vg) {
         vgRestriction = '';
     };
     
-    const restrictions = lcRestriction + veRestriction + vgRestriction;
+    const restrictions = lcRestriction + lfRestriction + veRestriction + vgRestriction;
     return restrictions;
 }
 
 // Fetches the food recipes from the API.
 function getFood(query, results) {
     const lowCarb = $('#low-carb').is(':checked');
+    const lowFat = $('#low-fat').is(':checked');
     const vegan = $('#vegan').is(':checked');
     const vegetarian = $('#vegetarian').is(':checked');
-    let foodRestrictions = getFoodRestrictions(lowCarb, vegan, vegetarian);
+    let foodRestrictions = getFoodRestrictions(lowCarb, lowFat, vegan, vegetarian);
 
     const url = searchURLFood + '?q=' + query + '&app_id=' + apiIdFood + '&app_key=' + apiKeyFood + '&from=0&to=' + results + foodRestrictions;
     console.log(url);
@@ -255,6 +262,10 @@ function startOver() {
         document.getElementById('food').checked = false;
         document.getElementById('cocktails').checked = false;
         document.getElementById('both').checked = false;
+        document.getElementById('low-carb').checked = false;
+        document.getElementById('low-fat').checked = false;
+        document.getElementById('vegan').checked = false;
+        document.getElementById('vegetarian').checked = false;
         document.getElementById('food-search').value = '';
         document.getElementById('cocktail-search').value = '';
         document.getElementById('max-results').value = 1;
