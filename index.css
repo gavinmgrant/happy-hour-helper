@@ -24,6 +24,7 @@ body {
   margin-right: auto;
   padding: 25px;
   text-align: center;
+  line-height: 2em;
   color: white;
   height: 100%;
 }
@@ -132,6 +133,8 @@ a:hover {
 
 .options-all {
   margin-top: 10px;
+  text-align: left;
+  margin-left: 30%;
 }
 
 .hidden, .null {
@@ -154,6 +157,7 @@ a:hover {
 
 #results {
   margin-top: 50px;
+  line-height: 1.5em;
 }
 
 #food-results, #cocktail-results {
@@ -211,6 +215,13 @@ select:-webkit-autofill:focus {
 
   .option {
     display: inline;
+  }
+
+  .options-all {
+    margin-top: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .images {
