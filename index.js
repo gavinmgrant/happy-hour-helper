@@ -82,8 +82,6 @@ function getFoodRestrictions(lc, lf, ve, vg) {
 
 // Fetches the food recipes from the API.
 function getFood(query, results) {
-    showSpinner();
-    
     const lowCarb = $('#low-carb').is(':checked');
     const lowFat = $('#low-fat').is(':checked');
     const vegan = $('#vegan').is(':checked');
@@ -96,6 +94,7 @@ function getFood(query, results) {
     if (query === "") {
         console.log('no food search');
     } else {
+    showSpinner();
     $('#options').addClass('hidden');
     fetch(url)
         .then(response => response.json())
@@ -161,14 +160,13 @@ function displayCocktailResults(responseJson) {
 
 // Fetches the cocktail recipes from the API.
 function getCocktails(query) {
-    showSpinner();
-    
     const url = searchURLCocktail + apiKeyCocktail + '/search.php?s=' + query;
     console.log(url);
 
     if (query === "") {
         console.log('no cocktail search');
     } else {
+    showSpinner();
     $('#options').addClass('hidden');
     fetch(url)
         .then(response => response.json())

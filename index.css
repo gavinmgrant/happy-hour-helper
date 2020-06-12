@@ -102,6 +102,9 @@ button {
   color: #f7b733;
   border: 1px solid #f7b733;
   padding-top: 18px;
+  transition-property: color border;
+  transition-duration: 1s;
+  transition-timing-function: linear;
 }
 
 button:hover, 
@@ -137,6 +140,7 @@ a:link {
 }
 
 a:hover {
+  color: white;
   cursor: pointer;
   text-decoration: none;
 }
