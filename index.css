@@ -75,7 +75,6 @@ input[type=text]:focus, input[type="number"]:focus, input[type="checkbox"]:focus
 input[type="checkbox"] {
   height: 30px;
   width: 30px;
-  vertical-align: middle;
   border: none;
   outline: none;
 }
@@ -91,6 +90,7 @@ button {
   background: none;
   color: #f7b733;
   border: 1px solid #f7b733;
+  padding-top: 18px;
 }
 
 button:hover, input[type="checkbox"]:hover {
@@ -132,7 +132,6 @@ a:hover {
 }
 
 .options-all {
-  margin-top: 10px;
   text-align: left;
   margin-left: 30%;
 }
@@ -218,7 +217,6 @@ select:-webkit-autofill:focus {
   }
 
   .options-all {
-    margin-top: 10px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
