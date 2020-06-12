@@ -24,7 +24,6 @@ function displayFoodResults(responseJson) {
         $('#food-error').removeClass('hidden');
         $('#food-results').addClass('hidden');
         $('#start-over').removeClass('hidden');
-        startOver();
         } else {
             shuffle(responseJson.hits);
             for (let i = 0; i < responseJson.hits.length; i++){
@@ -59,13 +58,11 @@ function getFoodRestrictions(lc, ve, vg) {
     } else {
         lcRestriction = '';
     };
-
     if (ve) {
         veRestriction = '&health=vegan';
     } else {
         veRestriction = '';
     };
-
     if (vg) {
         vgRestriction = '&health=vegetarian';
     } else {
@@ -87,8 +84,9 @@ function getFood(query, results) {
     console.log(url);
 
     if (query === "") {
-        console.log('no food search')
+        console.log('no food search');
     } else {
+    $('#options').addClass('hidden');
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayFoodResults(responseJson))
@@ -108,7 +106,6 @@ function displayCocktailResults(responseJson) {
         $('#cocktail-error').removeClass('hidden');
         $('#cocktail-results').addClass('hidden');
         $('#start-over').removeClass('hidden');
-        startOver();
         } else {
             shuffle(responseJson.drinks); 
             
@@ -157,8 +154,9 @@ function getCocktails(query) {
     console.log(url);
 
     if (query === "") {
-        console.log('no cocktail search')
+        console.log('no cocktail search');
     } else {
+    $('#options').addClass('hidden');
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayCocktailResults(responseJson))
@@ -191,6 +189,8 @@ function displayOptions(food, cocktails) {
     };
     if (!food && !cocktails) {
         $('#options-button').addClass('hidden');
+        $('#no-food-search').addClass('hidden');
+        $('#no-cocktail-search').addClass('hidden');
         alert('You must pick at least one option.');
     }
 }
@@ -213,11 +213,10 @@ function watchOptions() {
         const maxResults = $('#max-results').val();
         getFood(foodSearch, maxResults);
         getCocktails(cocktailSearch);
-        $('#options').addClass('hidden');
     });
 }
 
-// Waits for the user to click the start over button to start the app again.
+// Waits for the user to click the start over button, clears the values, and starts the app again.
 function startOver() {
     $('#start-over').click(function() {
         event.preventDefault();
