@@ -208,6 +208,7 @@ function displayOptions(food, cocktails) {
 
 // Selects both food and cocktail checkboxes on landing view.
 function checkBoth() {
+    const bothCheck = $('#both').is(':checked') || $('#both').not(':checked')
     $('#both').click(function() {
         if ($(this).is(':checked')) {
             document.getElementById('food').checked = true;
@@ -215,6 +216,24 @@ function checkBoth() {
         } else {
             document.getElementById('food').checked = false;
             document.getElementById('cocktails').checked = false;
+        }
+    });
+    $('#food').click(function() {
+        if ($(this).is(':checked') && $('#cocktails').is(':checked') && bothCheck) {
+            document.getElementById('cocktails').checked = false;
+            document.getElementById('both').checked = false;
+        } else {
+            document.getElementById('cocktails').checked = true;
+            document.getElementById('both').checked = false;
+        }
+    });
+    $('#cocktails').click(function() {
+        if ($(this).is(':checked') && $('#food').is(':checked') && bothCheck) {
+            document.getElementById('food').checked = false;
+            document.getElementById('both').checked = false;
+        } else {
+            document.getElementById('food').checked = true;
+            document.getElementById('both').checked = false;
         }
     });
 }
