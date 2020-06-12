@@ -10,6 +10,8 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
@@ -75,25 +77,25 @@ input[type="number"] {
 }
 
 input[type="number"] {
-  width: 70px;
-}
-
-input[type=text]:focus, 
-input[type="number"]:focus, 
-input[type="checkbox"]:focus {
-  border: 1px solid #dfdce3;
+  width: 80px;
 }
 
 input[type="checkbox"] {
-  height: 30px;
-  width: 30px;
-  border: none;
-  outline: none;
+  -ms-transform: scale(2);
+  -moz-transform: scale(2); 
+  -webkit-transform: scale(2); 
+  -o-transform: scale(2); 
+  transform: scale(2);
+  padding: 10px;
 }
 
 input[type="checkbox"]:checked {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
+}
+
+label {
+  padding: 8px;
 }
 
 button {
@@ -240,11 +242,11 @@ select:-webkit-autofill:focus {
 }
 
 .fade-in {
-  animation: fadeIn ease 5s;
-  -webkit-animation: fadeIn ease 5s;
-  -moz-animation: fadeIn ease 5s;
-  -o-animation: fadeIn ease 5s;
-  -ms-animation: fadeIn ease 5s;
+  animation: fadeIn ease 3s;
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
   }
 
 @keyframes fadeIn {
