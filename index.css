@@ -17,14 +17,16 @@ body {
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
-  padding: 25px;
+  padding: 20px;
   text-align: center;
-  line-height: 200%;
+  line-height: 150%;
   color: #dfdce3;
   height: 100%;
+  width: 90%;
 }
 
-section, form {
+section, 
+form {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -32,18 +34,28 @@ section, form {
 h1 {
   font-family: 'Cardo', sans-serif;
   color: #f7b733;
+  line-height: 150%;
 }
 
-h2, h3 {
+h2, 
+h3 {
   font-family: 'Cardo', sans-serif;
   color: white;
+  line-height: 150%;
 }
 
-button, input, select {
+button, 
+input, 
+select {
   padding: 15px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
   border-radius: 5px;
+}
+
+input[type="text"], 
+button {
+  width: 90%;
 }
 
 ::placeholder {
@@ -54,22 +66,21 @@ button, input, select {
   color: #dfdce3;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], 
+input[type="number"] {
   color: #dfdce3;
   border: 1px solid #dfdce3;
   margin-top: 10px;
   background: none;
 }
 
-input[type="text"] {
-  width: 75%;
-}
-
 input[type="number"] {
   width: 70px;
 }
 
-input[type=text]:focus, input[type="number"]:focus, input[type="checkbox"]:focus {
+input[type=text]:focus, 
+input[type="number"]:focus, 
+input[type="checkbox"]:focus {
   border: 1px solid #dfdce3;
 }
 
@@ -87,18 +98,19 @@ input[type="checkbox"]:checked {
 
 button {
   margin-top: 20px;
-  width: 300px;
   background: none;
   color: #f7b733;
   border: 1px solid #f7b733;
   padding-top: 18px;
 }
 
-button:hover, input[type="checkbox"]:hover {
+button:hover, 
+input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-button:hover, button:focus {
+button:hover, 
+button:focus {
   color: #dfdce3;
   border: 1px solid #dfdce3;
   outline: none;
@@ -114,7 +126,8 @@ li {
   text-align: center;
 }
 
-a:link, a:visited {
+a:link, 
+a:visited {
   color: #dfdce3;
   text-decoration: none;
 }
@@ -138,13 +151,14 @@ a:hover {
   margin-top: 10px;
 }
 
-.hidden, .null {
+.hidden, 
+.null {
   display: none;
 }
 
 .images {
   border-radius: 5px;
-  width: 250px;
+  width: 300px;
   padding: 0;
 }
 
@@ -152,7 +166,9 @@ a:hover {
   margin-top: 20px;
 }
 
-#error, #food-error, #cocktail-error {
+#error, 
+#food-error, 
+#cocktail-error {
   color: #fc4a1a;
 }
 
@@ -161,7 +177,8 @@ a:hover {
   line-height: 150%;
 }
 
-#food-results, #cocktail-results {
+#food-results, 
+#cocktail-results {
   margin-top: 50px;
 }
 
@@ -172,7 +189,8 @@ a:hover {
   border: 1px solid #fc4a1a;
 }
 
-#start-over:hover, #start-over:focus {
+#start-over:hover, 
+#start-over:focus {
   color: #dfdce3;
   border: 1px solid #dfdce3;
   outline: none;
@@ -217,23 +235,24 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media screen and (min-width: 500px) {
-  body {
-    width: 450px;
-  }
-
+@media screen and (min-width: 600px) {
   .images {
-    width: 300px;
-  }
-
-  input[type="text"], button {
-    width: 80%;
+    width: 350px;
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
   body {
-    width: 650px;
+    width: 640px;
+  }
+  
+  input[type="text"], 
+  button {
+    width: 600px;
+  }
+
+  .images {
+    width: 400px;
   }
 
   .option {
@@ -245,33 +264,34 @@ select:-webkit-autofill:focus {
     margin-left: auto;
     margin-right: auto;
   }
-
-  .images {
-    width: 400px;
-  }
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1280px) {
   body {
-    width: 1400px;
+    width: 1275px;
   }
 
-  button {
+  .images {
+    width: 450px;
+  }
+
+  #food-options, 
+  #food-results, 
+  #food-error, 
+  #no-food-search {
     width: 600px;
-  }
-
-  #food-options, #food-results, #food-error, #no-food-search {
-    width: 50%;
     float: left;
   }
 
-  #cocktail-options, #cocktail-results, #cocktail-error, #no-cocktail-search {
-    width: 50%;
+  #cocktail-options, 
+  #cocktail-results, 
+  #cocktail-error, 
+  #no-cocktail-search {
+    width: 600px;
     float: right;
   }
 
   #max {
     clear: both;
   }
-
 }
