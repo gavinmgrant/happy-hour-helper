@@ -195,6 +195,28 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+/* Spinner */
+#spinner:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 80px;
+  width: 80px;
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: #f7b733;
+  animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (min-width: 500px) {
   body {
     width: 450px;

@@ -82,6 +82,8 @@ function getFoodRestrictions(lc, lf, ve, vg) {
 
 // Fetches the food recipes from the API.
 function getFood(query, results) {
+    showSpinner();
+    
     const lowCarb = $('#low-carb').is(':checked');
     const lowFat = $('#low-fat').is(':checked');
     const vegan = $('#vegan').is(':checked');
@@ -159,6 +161,8 @@ function displayCocktailResults(responseJson) {
 
 // Fetches the cocktail recipes from the API.
 function getCocktails(query) {
+    showSpinner();
+    
     const url = searchURLCocktail + apiKeyCocktail + '/search.php?s=' + query;
     console.log(url);
 
@@ -229,6 +233,7 @@ function watchLanding() {
 
 // Waits for the user to select their search options.
 function watchOptions() {
+    preventEnter();
     $('#options-button').click(function() {
         event.preventDefault();
         const foodSearch = $('#food-search').val();
@@ -272,6 +277,26 @@ function startOver() {
     });
 }
 
+// Show the loading spinner.
+function showSpinner() {
+    const spinner = document.getElementById("spinner");
+    $('#spinner').removeClass('hidden');
+    setTimeout(() => {
+        $('#spinner').addClass('hidden');
+    }, 3000);
+}
+
+// Prevent enter in text input to run search function.
+function preventEnter() {
+    $('input[type="text"]').keydown(function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+}
+
+// Run the app.
 function runIt() {
     watchLanding();
     watchOptions();

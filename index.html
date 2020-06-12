@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Josefin+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="spinner" class="hidden"></div>
     <header>
         <h1>Happy Hour Helper</h1>
     </header>
@@ -41,10 +42,10 @@
     </container>
 
     <container id="options">
-        <form id="food-options" class="hidden" autocomplete="on">
+        <form id="food-options" class="hidden">
             <h2>Food options:</h2>
             <label for="food-options">Search for dishes by keyword:</label>
-            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter.">
+            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter." autocomplete="on">
             <div class="options-all">
                 <div class="option">
                     <input type="checkbox" id="low-carb" name="low-carb">
@@ -64,10 +65,10 @@
                 </div>
             </div>
         </form>
-        <form id="cocktail-options" class="hidden" autocomplete="on">
+        <form id="cocktail-options" class="hidden">
             <h2>Cocktail options:</h2>
             <label for="cocktail-options">Search for cocktails by keyword:</label>
-            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter.">
+            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter." autocomplete="on">
         </form>
         <section id="no-food-search" class="hidden">
             <h2>No food recipe search.</h2>
