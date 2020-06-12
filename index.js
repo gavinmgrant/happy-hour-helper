@@ -127,7 +127,7 @@ function displayCocktailResults(responseJson) {
                 results = $('#max-results').val();
             };
 
-            // This adds the results to the DOM.
+            // This adds the results to the DOM. Due to how the API JSON was organized, each line of ingredients needs to be listed below.
             for (let i = 0; i < results; i++) {
                 $('#cocktail-results-list').append(
                     `<li><h3>${responseJson.drinks[i].strDrink}</h3>
@@ -208,7 +208,9 @@ function displayOptions(food, cocktails) {
 
 // Selects both food and cocktail checkboxes on landing view.
 function checkBoth() {
-    const bothCheck = $('#both').is(':checked') || $('#both').not(':checked')
+    const foodCheck = $('#food').is(':checked') || $('#food').not(':checked');
+    const cocktailsCheck = $('#cocktails').is(':checked') || $('#cocktails').not(':checked');
+    const bothCheck = $('#both').is(':checked') || $('#both').not(':checked');
     $('#both').click(function() {
         if ($(this).is(':checked')) {
             document.getElementById('food').checked = true;
@@ -219,7 +221,7 @@ function checkBoth() {
         }
     });
     $('#food').click(function() {
-        if ($(this).is(':checked') && $('#cocktails').is(':checked') && bothCheck) {
+        if ($(this).is(':checked') && cocktailsCheck && bothCheck) {
             document.getElementById('cocktails').checked = false;
             document.getElementById('both').checked = false;
         } else {
@@ -228,7 +230,7 @@ function checkBoth() {
         }
     });
     $('#cocktails').click(function() {
-        if ($(this).is(':checked') && $('#food').is(':checked') && bothCheck) {
+        if ($(this).is(':checked') && foodCheck && bothCheck) {
             document.getElementById('food').checked = false;
             document.getElementById('both').checked = false;
         } else {

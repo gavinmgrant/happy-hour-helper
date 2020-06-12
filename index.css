@@ -25,12 +25,6 @@ body {
   width: 90%;
 }
 
-section, 
-form {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 h1 {
   font-family: 'Cardo', sans-serif;
   color: #f7b733;
@@ -42,6 +36,12 @@ h3 {
   font-family: 'Cardo', sans-serif;
   color: white;
   line-height: 150%;
+}
+
+section, 
+form {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 button, 
