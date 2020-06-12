@@ -4,20 +4,28 @@
 
 html {
   margin: 0;
+  height: 100%;
+  background: url("./images/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 header {
-  color: #333333;
+  color: #f7b733;
 }
 
+
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
   padding: 25px;
   text-align: center;
-  color: #616161;
+  color: white;
+  height: 100%;
 }
 
 section {
@@ -26,21 +34,29 @@ section {
 }
 
 h1, h2, h3 {
-  font-family: 'Oswald', sans-serif;
-  color: #333333;
+  font-family: 'Cardo', sans-serif;
 }
 
 button, input, select {
-  padding: 10px;
-  font-family: 'Roboto', sans-serif;
+  padding: 15px;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
   border-radius: 5px;
 }
 
+::placeholder {
+  color: white;
+}
+
+:-ms-input-placeholder {
+  color: white;
+}
+
 input[type="text"], input[type="number"] {
-  color: #616161;
-  border: 1px solid #616161;
+  color: white;
+  border: 1px solid white;
   margin-top: 10px;
+  background: none;
 }
 
 input[type="text"] {
@@ -52,18 +68,15 @@ input[type="number"] {
 }
 
 input[type=text]:focus, input[type="number"]:focus, input[type="checkbox"]:focus {
-  border: 1px solid #333333;
+  border: 1px solid white;
 }
 
 input[type="checkbox"] {
-  height: 25px;
-  width: 25px;
-  color: #616161;
+  height: 30px;
+  width: 30px;
   vertical-align: middle;
-}
-
-input[type="checkbox"]:hover + label {
-  color: #333333;
+  border: none;
+  outline: none;
 }
 
 input[type="checkbox"]:checked {
@@ -73,19 +86,20 @@ input[type="checkbox"]:checked {
 
 button {
   margin-top: 20px;
-  width: 200px;
-  border: none;
-  outline: none;
-  background-color: #616161;
-  color: white;
+  width: 300px;
+  background: none;
+  color: #f7b733;
+  border: 1px solid #f7b733;
 }
 
 button:hover, input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #333333;
+button:hover, button:focus {
+  color: white;
+  border: 1px solid white;
+  outline: none;
 }
 
 ul {
@@ -98,21 +112,18 @@ li {
   text-align: center;
 }
 
-nav {
-  position: sticky;
-  position: -webkit-sticky; /* Safari */
-  top: 0px;
-}
-
 a:link, a:visited {
-  color: #616161;
+  color: white;
   text-decoration: none;
 }
 
-a:hover {
-  color: #333333;
-  cursor: pointer;
+a:link {
   text-decoration: underline;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .option {
@@ -128,7 +139,7 @@ a:hover {
 }
 
 .images {
-  border-radius: 10px;
+  border-radius: 5px;
   width: 250px;
   padding: 0;
 }
@@ -138,7 +149,7 @@ a:hover {
 }
 
 #error, #food-error, #cocktail-error {
-  color: #b22222;
+  color: #fc4a1a;
 }
 
 #results {
@@ -150,16 +161,16 @@ a:hover {
 }
 
 #start-over {
-  background-color: #b22222;
-  color: white;
-  border: 1px solid #b22222;
   margin-top: 20px;
+  background: none;
+  color: #fc4a1a;
+  border: 1px solid #fc4a1a;
 }
 
-#start-over:hover {
-  background-color: white;
-  color: #b22222;
-  border: 1px solid #b22222;
+#start-over:hover, #start-over:focus {
+  color: white;
+  border: 1px solid white;
+  outline: none;
 }
 
 input:-webkit-autofill,
@@ -171,10 +182,12 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-border: 1px solid #616161;
-  -webkit-text-fill-color: #333333;
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-border: 1px solid white;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none inset !important;
+  -webkit-appearance: none;
   box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 @media screen and (min-width: 500px) {
@@ -186,7 +199,7 @@ select:-webkit-autofill:focus {
     width: 300px;
   }
 
-  input[type="text"] {
+  input[type="text"], button {
     width: 80%;
   }
 }
@@ -205,9 +218,13 @@ select:-webkit-autofill:focus {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   body {
-    width: 1200px;
+    width: 1400px;
+  }
+
+  button {
+    width: 600px;
   }
 
   #food-options, #food-results, #food-error, #no-food-search {
