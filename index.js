@@ -24,6 +24,7 @@ function displayFoodResults(responseJson) {
         $('#food-error').removeClass('hidden');
         $('#food-results').addClass('hidden');
         $('#start-over').removeClass('hidden');
+        startOver();
         } else {
             shuffle(responseJson.hits);
             for (let i = 0; i < responseJson.hits.length; i++){
@@ -106,6 +107,7 @@ function displayCocktailResults(responseJson) {
         $('#cocktail-error').removeClass('hidden');
         $('#cocktail-results').addClass('hidden');
         $('#start-over').removeClass('hidden');
+        startOver();
         } else {
             shuffle(responseJson.drinks); 
             
@@ -195,8 +197,22 @@ function displayOptions(food, cocktails) {
     }
 }
 
+// Selects both food and cocktail checkboxes on landing view.
+function checkBoth() {
+    $('#both').click(function() {
+        if ($(this).is(':checked')) {
+            document.getElementById('food').checked = true;
+            document.getElementById('cocktails').checked = true;
+        } else {
+            document.getElementById('food').checked = false;
+            document.getElementById('cocktails').checked = false;
+        }
+    });
+}
+
 // Waits for the user to select recipes for food, cocktail, or both on the landing view.
 function watchLanding() {
+    checkBoth();
     $('#landing-button').click(function() {
         const foodLanding = $('#food').is(':checked');
         const cocktailsLanding = $('#cocktails').is(':checked');
@@ -238,6 +254,7 @@ function startOver() {
         $('#options').removeClass('hidden');
         document.getElementById('food').checked = false;
         document.getElementById('cocktails').checked = false;
+        document.getElementById('both').checked = false;
         document.getElementById('food-search').value = '';
         document.getElementById('cocktail-search').value = '';
         document.getElementById('max-results').value = 1;

@@ -29,6 +29,10 @@
                     <input type="checkbox" id="cocktails" name="cocktails">
                     <label for="cocktails">Cocktails</label>
                 </div>
+                <div class="option">
+                    <input type="checkbox" id="both" name="both">
+                    <label for="both">Both</label>
+                </div>
             </div>
             <div id="landing-button">
                 <button>Go!</button>
@@ -37,10 +41,10 @@
     </container>
 
     <container id="options">
-        <section id="food-options" class="hidden">
+        <form id="food-options" class="hidden" autocomplete="on">
             <h2>Food options:</h2>
             <label for="food-options">Search for dishes by keyword:</label>
-            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter." required>
+            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter.">
             <div class="options-all">
                 <div class="option">
                     <input type="checkbox" id="low-carb" name="low-carb">
@@ -55,12 +59,12 @@
                     <label for="vegetarian">Vegetarian</label>
                 </div>
             </div>
-        </section>
-        <section id="cocktail-options" class="hidden">
+        </form>
+        <form id="cocktail-options" class="hidden" autocomplete="on">
             <h2>Cocktail options:</h2>
             <label for="cocktail-options">Search for cocktails by keyword:</label>
-            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter." required>
-        </section>
+            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter.">
+        </form>
         <section id="no-food-search" class="hidden">
             <h2>No food recipe search.</h2>
         </section>
