@@ -55,7 +55,8 @@ select {
   border-radius: 5px;
 }
 
-input[type="text"], 
+input[type="text"],
+input[type="submit"], 
 button {
   width: 90%;
 }
@@ -98,6 +99,7 @@ label {
   padding: 8px;
 }
 
+input[type="submit"],
 button {
   margin-top: 20px;
   background: none;
@@ -110,10 +112,12 @@ button {
 }
 
 button:hover, 
-input[type="checkbox"]:hover {
+input[type="checkbox"]:hover,
+input[type="submit"]:hover {
   cursor: pointer;
 }
 
+input[type="submit"]:hover,
 button:hover, 
 button:focus {
   color: #dfdce3;
@@ -290,7 +294,8 @@ hr.lineBreak {
     width: 640px;
   }
   
-  input[type="text"], 
+  input[type="text"],
+  input[type="submit"], 
   button {
     width: 600px;
   }

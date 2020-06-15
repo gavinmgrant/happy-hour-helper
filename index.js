@@ -260,8 +260,17 @@ function watchOptions() {
         const foodSearch = $('#food-search').val();
         const cocktailSearch = $('#cocktail-search').val();
         const maxResults = $('#max-results').val();
-        getFood(foodSearch, maxResults);
-        getCocktails(cocktailSearch);
+        
+        if (foodSearch == '' && (!$('#food-options').hasClass('hidden'))) {
+            alert('Don\'t forget your food keyword!')
+            return false;
+        } else if (cocktailSearch == '' && (!$('#cocktail-options').hasClass('hidden'))) {
+                alert('Don\'t forget your cocktail keyword!')
+                return false;
+        } else {
+            getFood(foodSearch, maxResults);
+            getCocktails(cocktailSearch);
+        }
     });
 }
 

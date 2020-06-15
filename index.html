@@ -41,11 +41,11 @@
         </section>
     </container>
 
-    <container id="options">
-        <form id="food-options" class="hidden">
+    <form id="options">
+        <section id="food-options" class="hidden">
             <h2>Food options:</h2>
             <label for="food-options">Search for dishes by keyword:</label>
-            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter." autocomplete="on">
+            <input type="text" name="food-search" id="food-search" placeholder="Enter an ingredient or letter.">
             <div class="options-all">
                 <div class="option">
                     <input type="checkbox" id="low-carb" name="low-carb">
@@ -64,12 +64,12 @@
                     <label for="vegetarian">Vegetarian</label>
                 </div>
             </div>
-        </form>
-        <form id="cocktail-options" class="hidden">
+        </section>
+        <section id="cocktail-options" class="hidden">
             <h2>Cocktail options:</h2>
             <label for="cocktail-options">Search for cocktails by keyword:</label>
-            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter." autocomplete="on">
-        </form>
+            <input type="text" name="cocktail-search" id="cocktail-search" placeholder="Enter an ingredient or letter.">
+        </section>
         <section id="no-food-search" class="hidden">
             <h2>No food recipe search.</h2>
         </section>
@@ -82,10 +82,8 @@
             <input type="number" name="max-results" id="max-results" value="1" min="1" max="10" required>
             <span>(up to 10)</span>
         </section>
-        <section id="options-button" class="hidden">
-            <button>Go!</button>
-        </section>
-    </container>
+        <input type="submit" id="options-button" class="hidden">
+    </form>
 
     <container id="results">
         <section id="food-results" class="hidden fade-in">
