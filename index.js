@@ -6,6 +6,22 @@ const apiKeyCocktail = '1';
 const searchURLFood = 'https://api.edamam.com/search';
 const searchURLCocktail = 'https://www.thecocktaildb.com/api/json/v1/';
 
+// Variables declared to improve performance.
+let maxRes = $('#max-results');
+let fResLst = $('#food-results-list');
+let cResLst = $('#cocktail-results-list');
+let fRes = $('#food-results');
+let cRes = $('#cocktail-results');
+let fOpt = $('#food-options');
+let cOpt = $('#cocktail-options');
+let oBtn = $('#options-button');
+let sOvr = $('#start-over');
+let fErr = $('#food-error');
+let cErr = $('#cocktail-error');
+let jsErr = $('#js-error-message');
+let nofSer = $('#no-food-search');
+let nocSer = $('#no-cocktail-search');
+
 // Shuffles an array.
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -18,33 +34,33 @@ function shuffle(arr) {
 // Displays the food recipe results.
 function displayFoodResults(responseJson) {
     console.log(responseJson);
-    $('#food-results-list').empty();
+    fResLst.empty();
 
     if (responseJson.count === 0) {
-        $('#food-error').removeClass('hidden');
-        $('#food-results').addClass('hidden');
-        $('#start-over').removeClass('hidden');
+        fErr.removeClass('hidden');
+        fRes.addClass('hidden');
+        sOvr.removeClass('hidden');
         startOver();
         } else {
             shuffle(responseJson.hits);
             for (let i = 0; i < responseJson.hits.length; i++){
-                $('#food-results-list').append(
+                fResLst.append(
                     `<li><h3>${responseJson.hits[i].recipe.label}</h3>
                     <img class="images" src ="${responseJson.hits[i].recipe.image}">
                     <p>Ingredients needed:</p>
                     </li>`)
                 for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++){
-                    $('#food-results-list').append(
+                fResLst.append(
                         `<li>${responseJson.hits[i].recipe.ingredientLines[j]}</li>`)
                     }
-                $('#food-results-list').append(
+                fResLst.append(
                     `<p>Serves: ${responseJson.hits[i].recipe.yield}  |  Calories: ${Math.round(responseJson.hits[i].recipe.calories)}</p>
                     <p>For directions to this recipe, go to <a href="${responseJson.hits[i].recipe.url}" target="_blank">${responseJson.hits[i].recipe.source}.</p>
                     <hr class="lineBreak">`)
                 }; 
-            $('#food-results').removeClass('hidden');
-            $('#food-error').addClass('hidden');
-            $('#start-over').removeClass('hidden');
+            fRes.removeClass('hidden');
+            fErr.addClass('hidden');
+            sOvr.removeClass('hidden');
             startOver();
     }
 }
@@ -101,8 +117,8 @@ function getFood(query, results) {
         .then(response => response.json())
         .then(responseJson => displayFoodResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong with your food search: ${err.message}`);
-            $('#food-results').addClass('hidden');
+            jsErr.text(`Something went wrong with your food search: ${err.message}`);
+            fRes.addClass('hidden');
       }); 
     }
 }
@@ -110,27 +126,27 @@ function getFood(query, results) {
 // Displays the cocktail recipe results.
 function displayCocktailResults(responseJson) {
     console.log(responseJson);
-    $('#cocktail-results-list').empty();
+    cResLst.empty();
 
     if (responseJson.drinks == null) {
-        $('#cocktail-error').removeClass('hidden');
-        $('#cocktail-results').addClass('hidden');
-        $('#start-over').removeClass('hidden');
+        cErr.removeClass('hidden');
+        cRes.addClass('hidden');
+        sOvr.removeClass('hidden');
         startOver();
         } else {
             shuffle(responseJson.drinks); 
             
             // This bit makes sure the maximum results requested does not exceed the number of entries in the array.
             let results = 1;
-            if ($('#max-results').val() > responseJson.drinks.length) {
+            if (maxRes.val() > responseJson.drinks.length) {
                 results = responseJson.drinks.length;
             } else {
-                results = $('#max-results').val();
+                results = maxRes.val();
             };
 
             // This adds the results to the DOM. Due to how the API JSON was organized, each line of ingredients needs to be listed below.
             for (let i = 0; i < results; i++) {
-                $('#cocktail-results-list').append(
+                cResLst.append(
                     `<li><h3>${responseJson.drinks[i].strDrink}</h3>
                     <img class="images" src ="${responseJson.drinks[i].strDrinkThumb}">
                     <p>Ingredients needed:</p>
@@ -153,9 +169,9 @@ function displayCocktailResults(responseJson) {
                     <hr class="lineBreak">
                     </li>`);
                 };        
-            $('#cocktail-results').removeClass('hidden');
-            $('#cocktail-error').addClass('hidden');
-            $('#start-over').removeClass('hidden');
+            cRes.removeClass('hidden');
+            cErr.addClass('hidden');
+            sOvr.removeClass('hidden');
             startOver();
     }
 }
@@ -174,8 +190,8 @@ function getCocktails(query) {
         .then(response => response.json())
         .then(responseJson => displayCocktailResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong with your cocktail search: ${err.message}`);
-            $('#cocktail-results').addClass('hidden');
+            jsErr.text(`Something went wrong with your cocktail search: ${err.message}`);
+            cRes.addClass('hidden');
       });
     }
 }
@@ -183,27 +199,27 @@ function getCocktails(query) {
 // Displays the options view and hides the landing view.
 function displayOptions(food, cocktails) {
     if (food) {
-        $('#food-options').removeClass('hidden');
-        $('#options-button').removeClass('hidden');
+        fOpt.removeClass('hidden');
+        oBtn.removeClass('hidden');
         $('#max').removeClass('hidden');
         $('#landing').addClass('hidden');
     } else {
-        $('#food-options').addClass('hidden');
-        $('#no-food-search').removeClass('hidden');
+        fOpt.addClass('hidden');
+        nofSer.removeClass('hidden');
     };
     if (cocktails) {
-        $('#cocktail-options').removeClass('hidden');
-        $('#options-button').removeClass('hidden');
+        cOpt.removeClass('hidden');
+        oBtn.removeClass('hidden');
         $('#max').removeClass('hidden');
         $('#landing').addClass('hidden');
     } else {
-        $('#cocktail-options').addClass('hidden');
-        $('#no-cocktail-search').removeClass('hidden');
+        cOpt.addClass('hidden');
+        nocSer.removeClass('hidden');
     };
     if (!food && !cocktails) {
-        $('#options-button').addClass('hidden');
-        $('#no-food-search').addClass('hidden');
-        $('#no-cocktail-search').addClass('hidden');
+        oBtn.addClass('hidden');
+        nofSer.addClass('hidden');
+        nocSer.addClass('hidden');
         alert('You must pick at least one option.');
     }
 }
@@ -255,16 +271,16 @@ function watchLanding() {
 // Waits for the user to select their search options.
 function watchOptions() {
     preventEnter();
-    $('#options-button').click(function() {
+    oBtn.click(function() {
         event.preventDefault();
         const foodSearch = $('#food-search').val();
         const cocktailSearch = $('#cocktail-search').val();
-        const maxResults = $('#max-results').val();
+        const maxResults = maxRes.val();
         
-        if (foodSearch == '' && (!$('#food-options').hasClass('hidden'))) {
+        if (foodSearch == '' && (!fOpt.hasClass('hidden'))) {
             alert('Don\'t forget your food keyword!')
             return false;
-        } else if (cocktailSearch == '' && (!$('#cocktail-options').hasClass('hidden'))) {
+        } else if (cocktailSearch == '' && (!cOpt.hasClass('hidden'))) {
                 alert('Don\'t forget your cocktail keyword!')
                 return false;
         } else {
@@ -276,24 +292,26 @@ function watchOptions() {
 
 // Waits for the user to click the start over button, clears the values, and starts the app again.
 function startOver() {
-    $('#start-over').click(function() {
+    sOvr.click(function() {
         event.preventDefault();
-        $('#food-results-list').empty();
-        $('#cocktail-results-list').empty();
-        $('#food-results').addClass('hidden');
-        $('#cocktail-results').addClass('hidden');
-        $('#food-options').addClass('hidden');
-        $('#cocktail-options').addClass('hidden');
-        $('#options-button').addClass('hidden');
+        fResLst.empty();
+        cResLst.empty();
+        fRes.addClass('hidden');
+        cRes.addClass('hidden');
+        fOpt.addClass('hidden');
+        cOpt.addClass('hidden');
+        oBtn.addClass('hidden');
+        sOvr.addClass('hidden');
+        fErr.addClass('hidden');
+        cErr.addClass('hidden');
+        jsErr.addClass('hidden');
+        nofSer.addClass('hidden');
+        nocSer.addClass('hidden');
+
+        $('#options').removeClass('hidden');
         $('#max').addClass('hidden');
         $('#landing').removeClass('hidden');
-        $('#start-over').addClass('hidden');
-        $('#food-error').addClass('hidden');
-        $('#cocktail-error').addClass('hidden');
-        $('#js-error-message').addClass('hidden');
-        $('#no-food-search').addClass('hidden');
-        $('#no-cocktail-search').addClass('hidden');
-        $('#options').removeClass('hidden');
+
         document.getElementById('food').checked = false;
         document.getElementById('cocktails').checked = false;
         document.getElementById('both').checked = false;
@@ -313,7 +331,7 @@ function showSpinner() {
     $('#spinner').removeClass('hidden');
     setTimeout(() => {
         $('#spinner').addClass('hidden');
-    }, 3000);
+    }, 2000);
 }
 
 // Prevent enter in text input to run search function.
