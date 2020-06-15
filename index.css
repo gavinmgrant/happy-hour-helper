@@ -274,6 +274,11 @@ select:-webkit-autofill:focus {
   100% {opacity:1;}
 }
 
+hr.lineBreak {
+  border-top: 4px dotted #dfdce3;
+  border-bottom: none;
+}
+
 @media screen and (min-width: 600px) {
   .images {
     width: 350px;

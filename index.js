@@ -39,7 +39,8 @@ function displayFoodResults(responseJson) {
                     }
                 $('#food-results-list').append(
                     `<p>Serves: ${responseJson.hits[i].recipe.yield}  |  Calories: ${Math.round(responseJson.hits[i].recipe.calories)}</p>
-                    <p>For directions to this recipe, go to <a href="${responseJson.hits[i].recipe.url}" target="_blank">${responseJson.hits[i].recipe.source}.</p>`)
+                    <p>For directions to this recipe, go to <a href="${responseJson.hits[i].recipe.url}" target="_blank">${responseJson.hits[i].recipe.source}.</p>
+                    <hr class="lineBreak">`)
                 }; 
             $('#food-results').removeClass('hidden');
             $('#food-error').addClass('hidden');
@@ -149,6 +150,7 @@ function displayCocktailResults(responseJson) {
                     <li><span class="${responseJson.drinks[i].strMeasure14}">${responseJson.drinks[i].strMeasure14} </span><span class="${responseJson.drinks[i].strIngredient14}">${responseJson.drinks[i].strIngredient14}</span></li>
                     <li><span class="${responseJson.drinks[i].strMeasure15}">${responseJson.drinks[i].strMeasure15} </span><span class="${responseJson.drinks[i].strIngredient15}">${responseJson.drinks[i].strIngredient15}</span></li>
                     <p>${responseJson.drinks[i].strInstructions}</p>
+                    <hr class="lineBreak">
                     </li>`);
                 };        
             $('#cocktail-results').removeClass('hidden');
