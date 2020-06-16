@@ -6,7 +6,9 @@ const apiKeyCocktail = '1';
 const searchURLFood = 'https://api.edamam.com/search';
 const searchURLCocktail = 'https://www.thecocktaildb.com/api/json/v1/';
 
-// Variables declared to improve performance.
+let food = document.getElementById('food');
+let cocktails = document.getElementById('cocktails');
+let both = document.getElementById('both');
 let maxRes = $('#max-results');
 let fResLst = $('#food-results-list');
 let cResLst = $('#cocktail-results-list');
@@ -14,13 +16,16 @@ let fRes = $('#food-results');
 let cRes = $('#cocktail-results');
 let fOpt = $('#food-options');
 let cOpt = $('#cocktail-options');
-let oBtn = $('#options-button');
+let optBtn = $('#options-button');
 let sOvr = $('#start-over');
 let fErr = $('#food-error');
 let cErr = $('#cocktail-error');
 let jsErr = $('#js-error-message');
 let nofSer = $('#no-food-search');
 let nocSer = $('#no-cocktail-search');
+let max = $('#max');
+let landing = $('#landing');
+let options = $('#options');
 
 // Shuffles an array.
 function shuffle(arr) {
@@ -112,7 +117,7 @@ function getFood(query, results) {
         console.log('no food search');
     } else {
     showSpinner();
-    $('#options').addClass('hidden');
+    options.addClass('hidden');
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayFoodResults(responseJson))
@@ -185,7 +190,7 @@ function getCocktails(query) {
         console.log('no cocktail search');
     } else {
     showSpinner();
-    $('#options').addClass('hidden');
+    options.addClass('hidden');
     fetch(url)
         .then(response => response.json())
         .then(responseJson => displayCocktailResults(responseJson))
@@ -200,24 +205,24 @@ function getCocktails(query) {
 function displayOptions(food, cocktails) {
     if (food) {
         fOpt.removeClass('hidden');
-        oBtn.removeClass('hidden');
-        $('#max').removeClass('hidden');
-        $('#landing').addClass('hidden');
+        optBtn.removeClass('hidden');
+        max.removeClass('hidden');
+        landing.addClass('hidden');
     } else {
         fOpt.addClass('hidden');
         nofSer.removeClass('hidden');
     };
     if (cocktails) {
         cOpt.removeClass('hidden');
-        oBtn.removeClass('hidden');
-        $('#max').removeClass('hidden');
-        $('#landing').addClass('hidden');
+        optBtn.removeClass('hidden');
+        max.removeClass('hidden');
+        landing.addClass('hidden');
     } else {
         cOpt.addClass('hidden');
         nocSer.removeClass('hidden');
     };
     if (!food && !cocktails) {
-        oBtn.addClass('hidden');
+        optBtn.addClass('hidden');
         nofSer.addClass('hidden');
         nocSer.addClass('hidden');
         alert('You must pick at least one option.');
@@ -231,29 +236,29 @@ function checkBoth() {
     const bothCheck = $('#both').is(':checked') || $('#both').not(':checked');
     $('#both').click(function() {
         if ($(this).is(':checked')) {
-            document.getElementById('food').checked = true;
-            document.getElementById('cocktails').checked = true;
+            food.checked = true;
+            cocktails.checked = true;
         } else {
-            document.getElementById('food').checked = false;
-            document.getElementById('cocktails').checked = false;
+            food.checked = false;
+            cocktails.checked = false;
         }
     });
     $('#food').click(function() {
         if ($(this).is(':checked') && cocktailsCheck && bothCheck) {
-            document.getElementById('cocktails').checked = false;
-            document.getElementById('both').checked = false;
+            cocktails.checked = false;
+            both.checked = false;
         } else {
-            document.getElementById('cocktails').checked = true;
-            document.getElementById('both').checked = false;
+            cocktails.checked = true;
+            both.checked = false;
         }
     });
     $('#cocktails').click(function() {
         if ($(this).is(':checked') && foodCheck && bothCheck) {
-            document.getElementById('food').checked = false;
-            document.getElementById('both').checked = false;
+            food.checked = false;
+            both.checked = false;
         } else {
-            document.getElementById('food').checked = true;
-            document.getElementById('both').checked = false;
+            food.checked = true;
+            both.checked = false;
         }
     });
 }
@@ -271,7 +276,7 @@ function watchLanding() {
 // Waits for the user to select their search options.
 function watchOptions() {
     preventEnter();
-    oBtn.click(function() {
+    optBtn.click(function() {
         event.preventDefault();
         const foodSearch = $('#food-search').val();
         const cocktailSearch = $('#cocktail-search').val();
@@ -300,21 +305,19 @@ function startOver() {
         cRes.addClass('hidden');
         fOpt.addClass('hidden');
         cOpt.addClass('hidden');
-        oBtn.addClass('hidden');
+        optBtn.addClass('hidden');
         sOvr.addClass('hidden');
         fErr.addClass('hidden');
         cErr.addClass('hidden');
         jsErr.addClass('hidden');
         nofSer.addClass('hidden');
         nocSer.addClass('hidden');
-
-        $('#options').removeClass('hidden');
-        $('#max').addClass('hidden');
-        $('#landing').removeClass('hidden');
-
-        document.getElementById('food').checked = false;
-        document.getElementById('cocktails').checked = false;
-        document.getElementById('both').checked = false;
+        max.addClass('hidden');
+        landing.removeClass('hidden');
+        options.removeClass('hidden');
+        food.checked = false;
+        cocktails.checked = false;
+        both.checked = false;
         document.getElementById('low-carb').checked = false;
         document.getElementById('low-fat').checked = false;
         document.getElementById('vegan').checked = false;

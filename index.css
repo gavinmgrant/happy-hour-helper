@@ -16,7 +16,7 @@ html {
 
 body {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -51,7 +51,7 @@ input,
 select {
   padding: 15px;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   border-radius: 5px;
 }
 
@@ -62,17 +62,17 @@ button {
 }
 
 ::placeholder {
-  color: #dfdce3;
+  color: white;
 }
 
 :-ms-input-placeholder {
-  color: #dfdce3;
+  color: white;
 }
 
 input[type="text"], 
 input[type="number"] {
-  color: #dfdce3;
-  border: 1px solid #dfdce3;
+  color: white;
+  border: 1px solid white;
   margin-top: 10px;
   background: none;
 }
@@ -120,8 +120,8 @@ input[type="submit"]:hover {
 input[type="submit"]:hover,
 button:hover, 
 button:focus {
-  color: #dfdce3;
-  border: 1px solid #dfdce3;
+  color: white;
+  border: 1px solid white;
   outline: none;
 }
 
@@ -137,7 +137,7 @@ li {
 
 a:link, 
 a:visited {
-  color: #dfdce3;
+  color: white;
   text-decoration: none;
 }
 
@@ -152,7 +152,8 @@ a:hover {
 }
 
 .option {
-  margin: 10px;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 .options-all {
@@ -201,8 +202,8 @@ a:hover {
 
 #start-over:hover, 
 #start-over:focus {
-  color: #dfdce3;
-  border: 1px solid #dfdce3;
+  color: white;
+  border: 1px solid white;
   outline: none;
 }
 
@@ -215,8 +216,8 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-border: 1px solid #dfdce3;
-  -webkit-text-fill-color: #dfdce3;
+  -webkit-text-fill-border: 1px solid white;
+  -webkit-text-fill-color: white;
   -webkit-box-shadow: none inset !important;
   -webkit-appearance: none;
   box-shadow: none;
@@ -279,7 +280,7 @@ select:-webkit-autofill:focus {
 }
 
 hr.lineBreak {
-  border-top: 4px dotted #dfdce3;
+  border-top: 4px dotted white;
   border-bottom: none;
 }
 
@@ -324,20 +325,26 @@ hr.lineBreak {
     width: 450px;
   }
 
-  #food-options, 
-  #food-results, 
-  #food-error, 
+  #food-options,  
   #no-food-search {
     width: 600px;
     float: left;
   }
 
-  #cocktail-options, 
-  #cocktail-results, 
-  #cocktail-error, 
+  #cocktail-options,  
   #no-cocktail-search {
     width: 600px;
     float: right;
+  }
+
+  #food-results, 
+  #food-error,
+  #cocktail-results, 
+  #cocktail-error {
+    width: 900px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #max {
